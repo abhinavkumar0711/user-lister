@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Subscribe to our newsletter!</h1>
+    </div>
+    <form>
+        <input class="input-box" type="text" placeholder="Enter your name" id="name">
+        <input class="input-box" type="text" placeholder="Enter your email address" id="email">
+        <button id="join">Subscribe</button>
+    </form>
+    <script>
+        let name = document.querySelector('#name');
+        let email = document.querySelector('#email');
+
+        document.getElementById('join').onclick = ()=>{
+            if (!email.value.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            let data = {
+                name: name.value,
+                email: email.value
+            };
+
+            fetch("/sendemail", {
+                method: "POST",  
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then((res) => {
+                alert('Success')
+            })
+            .catch(error => {
+                alert('success')
+            });
+
+            name.value = '';
+            email.value = '';
+        };
+    </script>
+</body>
+</html>

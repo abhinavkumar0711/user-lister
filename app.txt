@@ -1,0 +1,16 @@
+The application allows users to subscribe to a newsletter by entering their email address in an input field and clicking a subscribe button. The application then stores the email address in json file on the server and sends a success message to the user.
+
+Here are the step-by-step instructions for using the application:
+
+The user navigates to the application URL in their web browser.
+The application loads the HTML page and displays a form that includes an input field for the user's email address and a subscribe button.
+The user enters their email address in the input field and clicks the subscribe button.
+The subscribe button triggers a JavaScript function that sends an HTTP POST request to the server. 
+The server receives the HTTP POST request and extracts the Name and email address from the query parameter.
+The server stores the email address in a json file on the server using the Node.js fs module.
+The server sends a success message back to the client, which is displayed as an alert message in the user's web browser.
+If the user enters an invalid email address (i.e. one that does not contain an "@" symbol), the JavaScript function displays an error message in the user's web browser.
+The details of subscribed users is displayed on /user.html. 
+
+
+

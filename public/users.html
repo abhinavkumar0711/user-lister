@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User List</title>
+  <link rel="stylesheet" href="users.css">
+</head>
+<body>
+  <h1>Subscribers List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="users-table">
+    </tbody>
+  </table>
+  <script>
+    fetch("/users")
+      .then(response => response.json())
+      .then(data => {
+        const table = document.querySelector("#users-table");
+        data.forEach(user => {
+          const row = document.createElement("tr");
+          const nameCell = document.createElement("td");
+          const emailCell = document.createElement("td");
+          nameCell.textContent = user.name;
+          emailCell.textContent = user.email;
+          row.appendChild(nameCell);
+          row.appendChild(emailCell);
+          table.appendChild(row);
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+</html>
